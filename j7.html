@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Royalcore Necklace</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff0f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .shop-header {
+      background-color: #ff85a2;
+      padding: 1rem 2rem;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .shop-header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .shop-header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.2rem;
+      font-weight: bold;
+    }
+
+    .product-container {
+      max-width: 960px;
+      margin: 2rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-image {
+      flex: 1 1 45%;
+    }
+
+    .product-details {
+      flex: 1 1 50%;
+    }
+
+    .product-details h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #d63384;
+    }
+
+    .price {
+      font-size: 1.6rem;
+      color: #ff4d6d;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+
+    .quantity {
+      margin-bottom: 1.5rem;
+    }
+
+    .quantity label {
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    #qty {
+      padding: 0.4rem 0.8rem;
+      font-size: 1rem;
+      width: 60px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .actions button {
+      padding: 0.7rem 1.4rem;
+      font-size: 1rem;
+      margin-right: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .buy-now {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .buy-now:hover {
+      background-color: #218838;
+    }
+
+    .actions button:last-child {
+      background-color: #ffc107;
+      color: #333;
+    }
+
+    .actions button:last-child:hover {
+      background-color: #e0a800;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="shop-header">
+    <h1>Royalcore Necklace</h1>
+    <nav>
+      <a href="index.html">← Back to Collection</a>
+      <a href="cart.html">🛒 Cart</a>
+    </nav>
+  </header>
+
+  <div class="product-container">
+    <div class="product-image">
+      <img src="images/s4.jpg" alt="Royalcore Necklace" style="width:100%;">
+    </div>
+    <div class="product-details">
+      <h1>Royalcore Necklace</h1>
+      <p class="price">₹229</p>
+
+      <div class="quantity">
+        <label for="qty"><strong>Quantity:</strong></label>
+        <input type="number" id="qty" name="quantity" value="1" min="1" style="width:60px; padding: 0.3rem;">
+      </div>
+
+      <div class="actions">
+        <button class="buy-now" onclick="buyNow()">Buy Now</button>
+        <button class="add-cart" onclick="addToCart()">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function addToCart() {
+      const product = {
+        id: 'royalcore-necklace',
+        name: 'Royalcore Necklace',
+        price: 229,
+        image: 'images/s4.jpg',
+        size: '',
+        quantity: parseInt(document.getElementById('qty').value) || 1
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('Item added to cart!');
+    }
+
+    function buyNow() {
+      addToCart();
+      window.location.href = 'cart.html';
+    }
+  </script>
+
+</body>
+</html>
