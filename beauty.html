@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beauty Collection</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="shop-header">
+    <h1>Fashion & Skincare</h1>
+    <nav>
+      <a href="index.html">Back to Home</a>
+    </nav>
+  </header>
+
+  <!-- Beauty Section -->
+  <section class="dress-section">
+    <h2>Our Beauty & Skincare Picks</h2>
+    <div class="dress-gallery">
+
+      <!-- Product 1 -->
+      <div class="dress-card">
+        <a href="b1.html"style="text-decoration: none; color: inherit;">
+        <img src="images/lipstick.jpg" alt="Lipstick" />
+        <h3 class="pink-title">Matte Lipstick Set</h3>
+        <p class="text">₹299</p>
+        <button class="cart-btn" onclick="addToCart('Matte Lipstick Set', 299)">Add to Cart</button>
+      </div>
+    </a>
+      <!-- Product 2 -->
+      <div class="dress-card">
+        <a href="b2.html"style="text-decoration: none; color: inherit;">
+        <img src="images/skincare.jpg" alt="Skincare Kit" />
+        <h3 class="pink-title">Glow Skincare Kit</h3>
+        <p class="text">₹1,199</p>
+        <button class="cart-btn" onclick="addToCart('Glow Skincare Kit', 1199)">Add to Cart</button>
+      </div>
+    </a>
+      <!-- Product 3 -->
+      <div class="dress-card">
+        <a href="b3.html"style="text-decoration: none; color: inherit;">
+        <img src="images/eyeshadow.jpg" alt="Eye Palette" />
+        <h3 class="pink-title">Eyeshadow Palette</h3>
+        <p class="text">₹599</p>
+        <button class="cart-btn" onclick="addToCart('Eyeshadow Palette', 599)">Add to Cart</button>
+      </div>
+    </a>
+      <div class="dress-card">
+        <a href="b4.html"style="text-decoration: none; color: inherit;">
+        <img src="images/m1.jpg" alt="Blush" />
+        <h3 class="pink-title">Blush</h3>
+        <p class="text">₹299</p>
+        <button class="cart-btn" onclick="addToCart('Blush', 299)">Add to Cart</button>
+      </div>
+    </a>
+      <div class="dress-card">
+        <a href="b5.html"style="text-decoration: none; color: inherit;">
+        <img src="images/m2.jpg" alt="Lipgloss" />
+        <h3 class="pink-title">Lipgloss</h3>
+        <p class="text">₹399</p>
+        <button class="cart-btn" onclick="addToCart('Lipgloss', 399)">Add to Cart</button>
+      </div>
+    </a>
+      <div class="dress-card">
+        <a href="b6.html"style="text-decoration: none; color: inherit;">
+        <img src="images/m3.jpg" alt="Marc Jacobs Perfume" />
+        <h3 class="pink-title">Marc Jacobs Perfume</h3>
+        <p class="text">₹599</p>
+        <button class="cart-btn" onclick="addToCart('Marc Jacobs Perfume', 599)">Add to Cart</button>
+      </div>
+    </a>
+      <div class="dress-card">
+        <a href="b7.html"style="text-decoration: none; color: inherit;">
+        <img src="images/m4.jpg" alt="Face Mask Kit" />
+        <h3 class="pink-title">Face Mask Kit</h3>
+        <p class="text">₹499</p>
+        <button class="cart-btn" onclick="addToCart('Face Mask Kit', 499)">Add to Cart</button>
+      </div>
+    </a>
+      <div class="dress-card">
+        <a href="b6.html"style="text-decoration: none; color: inherit;"></a>
+        <img src="images/m5.jpg" alt="Nail Aesthetics" />
+        <h3 class="pink-title">Nail Aesthetics</h3>
+        <p class="text">₹699</p>
+        <button class="cart-btn" onclick="addToCart('Nail Aesthetics', 699)">Add to Cart</button>
+      </div>
+
+      <div class="dress-card">
+        <a href="b6.html"style="text-decoration: none; color: inherit;"></a>
+        <img src="images/m6.jpg" alt="Vegan Skincare Kit" />
+        <h3 class="pink-title">Vegan Skincare Kit</h3>
+        <p class="text">₹299</p>
+        <button class="cart-btn" onclick="addToCart('Vegan Skincare Kit', 299)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Scripts -->
+  <script>
+    function addToCart(item, price) {
+      alert(`${item} added to cart for ₹${price}`);
+    }
+
+    function placeOrder(item) {
+      alert(`Order placed for ${item}! Thank you for shopping 💖`);
+    }
+  </script>
+
+</body>
+</html>
