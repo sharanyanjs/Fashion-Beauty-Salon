@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #fff0f5; /* soft pink */
+    }
+
+    .cart-container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #d6336c;
+    }
+
+    .cart-item {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: transform 0.2s;
+    }
+
+    .cart-item:hover {
+      transform: scale(1.01);
+    }
+
+    .cart-item img {
+      width: 100px;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .cart-info {
+      flex: 1;
+    }
+
+    .cart-info h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    .cart-info p {
+      margin: 4px 0;
+      font-size: 0.95rem;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 1.05rem;
+      color: #d6336c;
+    }
+
+    .total-price {
+      text-align: right;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #ffe4ec;
+      border-radius: 10px;
+      color: #d6336c;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #d6336c;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #b02556;
+    }
+
+    .empty {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #888;
+      margin-top: 50px;
+    }
+
+    .confirmation {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.3rem;
+      color: #28a745;
+      display: none;
+    }
+
+    .continue-shopping {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .continue-shopping a {
+      text-decoration: none;
+      background-color: #ff69b4;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .continue-shopping a:hover {
+      background-color: #e055a0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cart-container">
+    <h1>Your Cart</h1>
+    <div id="cart-items"></div>
+    <div id="total" class="total-price"></div>
+    <button id="continue-btn" class="btn" style="display: none;">Continue</button>
+    <div class="empty" id="empty-msg" style="display: none;">Your cart is empty 😕</div>
+
+    <div class="confirmation" id="confirmation-msg">🎉 Order Placed Successfully!</div>
+    <div class="continue-shopping" id="continue-shopping">
+      <a href="index.html">Continue Shopping</a>
+    </div>
+  </div>
+
+  <script>
+    const cartContainer = document.getElementById('cart-items');
+    const totalDisplay = document.getElementById('total');
+    const continueBtn = document.getElementById('continue-btn');
+    const emptyMsg = document.getElementById('empty-msg');
+    const confirmationMsg = document.getElementById('confirmation-msg');
+    const continueShopping = document.getElementById('continue-shopping');
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (cart.length === 0) {
+      emptyMsg.style.display = 'block';
+    } else {
+      let grandTotal = 0;
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        grandTotal += itemTotal;
+
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-info">
+            <h3>${item.name}</h3>
+            <p>Size: ${item.size}</p>
+            <p>Quantity: ${item.quantity}</p>
+          </div>
+          <div class="price">₹${itemTotal}</div>
+        `;
+
+        cartContainer.appendChild(itemDiv);
+      });
+
+      totalDisplay.textContent = `Grand Total: ₹${grandTotal}`;
+      continueBtn.style.display = 'inline-block';
+    }
+
+    continueBtn.addEventListener('click', () => {
+      // Simulate order placed
+      localStorage.removeItem('cart');
+      cartContainer.innerHTML = '';
+      totalDisplay.style.display = 'none';
+      continueBtn.style.display = 'none';
+      confirmationMsg.style.display = 'block';
+      continueShopping.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
