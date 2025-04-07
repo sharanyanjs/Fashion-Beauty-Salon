@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rosé Garden Midi</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .product-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 1rem;
+    }
+    .product-image {
+      flex: 1 1 40%;
+    }
+    .product-details {
+      flex: 1 1 50%;
+    }
+    .product-details h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .price {
+      font-size: 1.5rem;
+      color: #d6336c;
+      margin-bottom: 1rem;
+    }
+    .sizes, .quantity {
+      margin-bottom: 1rem;
+    }
+    .sizes button {
+      margin-right: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border: 1px solid #ccc;
+      background: #f9f9f9;
+      cursor: pointer;
+    }
+    .actions button {
+      margin-right: 1rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .buy-now {
+      background-color: #28a745;
+      color: white;
+      border: none;
+    }
+    .add-cart {
+      background-color: #ffc107;
+      color: black;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="shop-header">
+    <h1>Rosé Garden Midi</h1>
+    <nav>
+      <a href="index.html">← Back to Collection</a>
+      <a href="cart.html">🛒 Cart</a>
+    </nav>
+  </header>
+
+  <div class="product-container">
+    <div class="product-image">
+      <img src="images/i15.jpg" alt="Rosé Garden Midi" style="width:100%;">
+    </div>
+    <div class="product-details">
+      <h1>Rosé Garden Midi</h1>
+      <p class="price">₹1,899</p>
+
+      <div class="sizes">
+        <label><strong>Size:</strong></label><br />
+        <button>S</button>
+        <button>M</button>
+        <button>L</button>
+        <button>XL</button>
+      </div>
+
+      <div class="quantity">
+        <label for="qty"><strong>Quantity:</strong></label>
+        <input type="number" id="qty" name="quantity" value="1" min="1" style="width:60px; padding: 0.3rem;">
+      </div>
+
+      <div class="actions">
+        <button class="buy-now">Buy Now</button>
+        <button onclick="addToCart()">Add to Cart</button>
+
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    function addToCart() {
+      const product = {
+        id: 'rose-garden-midi',
+        name: 'Rosé Garden Midi',
+        price: 1899,
+        image: 'images/i15.jpg',
+        size: getSelectedSize(),
+        quantity: parseInt(document.getElementById('qty').value) || 1
+      };
+  
+      // Get existing cart from localStorage
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+      // Add this product
+      cart.push(product);
+  
+      // Save back to localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+  
+      alert('Item added to cart!');
+    }
+  
+    function getSelectedSize() {
+      const buttons = document.querySelectorAll('.sizes button');
+      for (const btn of buttons) {
+        if (btn.classList.contains('selected')) {
+          return btn.textContent;
+        }
+      }
+      return 'M'; // default size if none selected
+    }
+  
+    // Add selection effect
+    document.querySelectorAll('.sizes button').forEach(button => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.sizes button').forEach(btn => btn.classList.remove('selected'));
+        button.classList.add('selected');
+      });
+    });
+  </script>
+  
+</body>
+</html>
