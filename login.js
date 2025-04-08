@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (email === '' || password === '') {
             alert('Please fill in all fields');
         } else {
-            // You can add actual login logic here (API call etc)
-            // For now, just redirect
-            window.location.href = 'shop.html';
+            // Scroll to the products section instead of redirecting
+            const productsSection = document.getElementById('products');
+            productsSection.scrollIntoView({ behavior: 'smooth' });
         }
     });
 });
